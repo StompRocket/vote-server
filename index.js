@@ -6,7 +6,7 @@
   var express = require('express')
   const server = express()
   .use((req, res) => res.sendFile('/inde.html'))
-  .listen(8000, () => console.log('Listening on 8000'))
+  .listen(process.env.PORT || 8000, () => console.log('Listening on', process.env.PORT || 8000))
   const io = socketIO(server)
   var fs = require('fs')
 
