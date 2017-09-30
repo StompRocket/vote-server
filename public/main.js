@@ -7,7 +7,8 @@ rawFile.onreadystatechange = function () {
     var allText = rawFile.responseText
     port = allText
     console.log(port)
-    var socket = io(window.location.hostname + ':' + port)
+  //  var socket = io(window.location.hostname + ':' + port)
+    var socket = io('https://infinite-reef-25554.herokuapp.com')
 
     var app = new Vue({
       el: '#app',
@@ -96,4 +97,3 @@ rawFile.onreadystatechange = function () {
   }
 }
 rawFile.send()
-
