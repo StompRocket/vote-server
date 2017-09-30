@@ -9,6 +9,14 @@ var fs = require('fs')
 console.log('listening on', port)
 var canidates = []
 var db = {}
+var fs = require('fs')
+fs.writeFile(__dirname + '/public/port.txt', port, function (err) {
+  if (err) {
+    return console.log(err)
+  }
+
+  console.log('The file was saved!')
+})
 fs.readFile(__dirname + '/config.json', function (err, data) {
   if (err) {
     throw err

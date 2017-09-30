@@ -1,10 +1,17 @@
 
-const production = false
-if (production) {
-  var socket = io('https://infinite-reef-25554.herokuapp.com:57379')
-} else {
-  var socket = io('//192.168.1.66:8000')
+var port = 8000
+var rawFile = new XMLHttpRequest()
+rawFile.open('GET', 'port.txt', true)
+rawFile.onreadystatechange = function () {
+  if (rawFile.readyState === 4) {
+    var allText = rawFile.responseText
+    port = allText
+    console.log(port)
+  }
 }
+rawFile.send()
+
+var socket = io(window.location.hostname + ':' + port)
 
 var app = new Vue({
   el: '#app',
