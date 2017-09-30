@@ -42,7 +42,7 @@ io.on('connection', function (socket) {
       console.log(canidate, uid, email, name)
       // console.log(db.voting)
       db.voting.canidates[canidate.toString()].votes.push(uid)
-      db.voting.users.uid = true
+      db.voting.users.[uid] = true
       db.voting.canidates[canidate.toString()].totalVotes ++
       db.voting.totalVotes ++
       io.emit('votes', db.voting)
