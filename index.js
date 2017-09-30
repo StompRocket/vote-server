@@ -6,7 +6,6 @@ app.use(express.static('public'))
 var socket = require('socket.io')
 var io = socket(server)
 var fs = require('fs')
-console.log(port)
 console.log('listening on', port)
 var canidates = []
 var db = {}
@@ -18,7 +17,7 @@ fs.readFile(__dirname + '/config.json', function (err, data) {
   canidates = data.canidates
   db = data
 })
-
+console.log(port)
 // io.set('transports', ['xhr-polling'])
 io.on('connection', function (socket) {
   console.log('connection')

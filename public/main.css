@@ -1,0 +1,29 @@
+.info-box {
+  background-color: #2ecc71;
+}
+
+.whiteText {
+  color: white;
+}
+
+.centerAlign {
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.warning-box {
+  background-color: #e74c3c;
+}
+
+#thankyou {
+  height: 100%!important;
+  text-align: center;
+}
+
+html, body {
+  height: 100%;
+}

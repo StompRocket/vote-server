@@ -1,0 +1,58 @@
+.info-box {
+  background-color: #2ecc71;
+}
+
+.whiteText {
+  color: white;
+}
+
+.centerAlign {
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.warning-box {
+  background-color: #e74c3c;
+}
+
+#thankyou {
+  height: 100%!important;
+  text-align: center;
+}
+
+html, body {
+  height: 100%;
+}
+.podiums {
+  height: 400px;
+  display: flex;
+}
+.second-top {
+  height: 25%;
+}
+.second-bottom {
+  height: 75%;
+  background-color: #e67e22;
+  padding: 20px;
+}
+.first-bottom {
+  height: 100%;
+  background-color: #e74c3c;
+  padding: 20px;
+}
+.third-top {
+  height: 50%;
+}
+.third-bottom{
+  height: 50%;
+  background-color: #f1c40f;
+  padding: 20px;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}

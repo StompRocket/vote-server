@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <title>PS Vote!</title>
+        <link rel="stylesheet" href="bulma.css" />
+        <link rel="stylesheet" href="main.css" />
+    </head>
+
+    <body>
+        <main id="app">
+            <section v-if="voted" style="height: 100%;" id="thankyou" class="hero is-large">
+                <div class="hero-body">
+                    <div class="container">
+                        <h1 class="title">
+          Thank You!
+          </h1>
+                        <h2 class="subtitle">
+          Your response has been recorded
+          </h2>
+                    </div>
+                </div>
+            </section>
+            <div v-if="!voted" id="voting">
+                <div class="info-box">
+                    <br />
+                    <h1 class="title is-2 centerAlign whiteText">Vote For President!</h1>
+                    <br />
+                    <button @click="login" class="button is-dark">{{loginMessage}}</button>
+                </div>
+                <div v-if="!loginState">
+                    <br><br>
+                    <h1 class="title is-2">Please Login to place your vote</h1>
+                </div>
+                <div v-if="loginState" class="container">
+                    <br />
+                    <div v-for="candidate in canidates" class="box">
+                        <div class="title is-3">
+                            {{candidate.name}}
+                        </div>
+                        <i>{{candidate.motto}}</i>
+                        <br />
+                        <br />
+                        <div>
+                            {{candidate.values}}
+                        </div>
+                        <br />
+                        <a href="#!" @click.prevent="openModal(candidate)">
+                            <div class="box info-box">
+                                <p class="title is-3 whiteText centerAlign">Place Vote</p>
+                            </div>
+                        </a>
+                    </div>
+                    <br />
+                </div>
+                <div if="modal" v-bind:class="{ 'is-active': modal }" class="modal">
+                    <div @click.prevent="closeModal" class="modal-background">
+
+                    </div>
+                    <div class="modal-content">
+                        <div class="box">
+                            <div class="title is-3">
+                                Place Your Vote For <b>{{modalCandidate.name}}!</b>
+                            </div>
+                            <i>{{modalCandidate.motto}}</i>
+                            <br />
+                            <br />
+                            <p>
+                                {{modalCandidate.values}}
+                            </p>
+                            <br />
+                            <div class="columns">
+                                <div class="column">
+                                    <a href="#!" @click.prevent="closeModal">
+                                        <div class="box warning-box">
+                                            <p class="title is-3 whiteText centerAlign">No! Go Back!</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="column">
+                                    <a href="#!" @click.prevent="voteFor(modalCandidate)">
+                                        <div class=" box info-box ">
+                                            <p class="title is-3 whiteText centerAlign ">Submit Vote!</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyB7YPgZojQfz59zQRKjK-V0uCDtwbyxLvQ",
+                authDomain: "vote-809f1.firebaseapp.com",
+                databaseURL: "https://vote-809f1.firebaseio.com",
+                projectId: "vote-809f1",
+                storageBucket: "",
+                messagingSenderId: "595808194393"
+            };
+            firebase.initializeApp(config);
+            var provider = new firebase.auth.GoogleAuthProvider();
+            provider.setCustomParameters(
+            {
+                'login_hint': 'name@prospectsierra.org'
+            });
+        </script>
+        <script src="https://unpkg.com/vue"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+        <script src="main.js" charset="utf-8"></script>
+    </body>
+
+</html>
