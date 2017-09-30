@@ -14,11 +14,11 @@ var app = new Vue({
     socket.emit('getVotes')
     socket.emit('getCanidates')
     socket.on('canidates', function (canidates) {
-      console.log('got canidates', canidates)
+      // console.log('got canidates', canidates)
       app.canidates = canidates
     })
     socket.on('votes', function (voting) {
-      console.log(voting)
+    //  console.log(voting)
       app.voting = voting
     })
   },
