@@ -1,5 +1,7 @@
-var app = require('http').createServer()
-var io = require('socket.io')(app)
+var express = require('express'),
+  app = express(),
+  server = require('http').createServer(app),
+  io = require('socket.io').listen(server)
 var fs = require('fs')
 
 var canidates = []
@@ -12,7 +14,7 @@ fs.readFile(__dirname + '/config.json', function (err, data) {
   canidates = data.canidates
   db = data
 })
-app.listen(process.env.PORT || 8000)
+server.listen(process.env.PORT || 8000)
 
 // io.set('transports', ['xhr-polling'])
 console.log('listening on port', process.env.PORT || 8000)
