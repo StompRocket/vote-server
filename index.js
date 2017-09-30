@@ -20,10 +20,8 @@
     canidates = data.canidates
     db = data
   })
-  server.listen(process.env.PORT || 8000)
 
 // io.set('transports', ['xhr-polling'])
-  console.log('listening on port', process.env.PORT || 8000)
   io.on('connection', function (socket) {
     console.log('connection')
     socket.on('vote', function (canidate, uid, email, name) {
