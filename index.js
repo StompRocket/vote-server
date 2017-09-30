@@ -13,7 +13,7 @@ fs.readFile(__dirname + '/config.json', function (err, data) {
   db = data
 })
 app.listen(8000)
-
+console.log('listening on port 8000')
 io.on('connection', function (socket) {
   console.log('connection')
   socket.on('vote', function (canidate, uid, email, name) {
