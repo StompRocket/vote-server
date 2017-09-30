@@ -22,24 +22,28 @@ console.log(port)
 // io.set('transports', ['xhr-polling'])
 io.on('connection', function (socket) {
   console.log('connection')
+  var type = 'client'
+  io.emit('votes', db.voting)
   if (!db.voting.open) {
     socket.emit('votingClosed')
     console.log(db.voting.open, 'voting closed')
   }
   socket.on('getVotes', function () {
+    type = 'console'
     socket.emit('votes', db.voting)
     console.log('sending votes')
   })
   socket.on('vote', function (canidate, uid, email, name) {
     console.log('checking', uid)
+    db.voting.totalClients ++
     if (db.voting.users[uid]) {
       socket.emit('allreadyvoted')
     } else {
       console.log(canidate, uid, email, name)
       // console.log(db.voting)
-      db.voting[canidate.toString()].votes.push(uid)
+      db.voting.canidates[canidate.toString()].votes.push(uid)
       db.voting.users.uid = true
-      db.voting[canidate.toString()].totalVotes ++
+      db.voting.canidates[canidate.toString()].totalVotes ++
       db.voting.totalVotes ++
       io.emit('votes', db.voting)
     }
@@ -59,6 +63,10 @@ io.on('connection', function (socket) {
     socket.emit('canidates', canidates)
   })
   socket.on('disconnect', function () {
+    if (type == 'client') {
+      db.voting.totalClients --
+    }
+    socket.emit('votes', db.voting)
     console.log('user disconnected')
   })
 })

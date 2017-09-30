@@ -22,9 +22,30 @@ var app = new Vue({
       app.voting = voting
     })
   },
+  computed: {
+    sortedArray: function () {
+      var sortable = []
+      for (var vehicle in this.voting.canidates) {
+        sortable.push([vehicle, this.voting.canidates[vehicle]])
+      }
+      function compare (a, b) {
+        if (a[1].totalVotes > b[1].totalVotes) {
+          return -1
+        }
+        if (a[1].totalVotes < b[1].totalVotes) {
+          return 1
+        }
+        return 0
+      }
+
+      return sortable.sort(compare)
+    }
+  },
   methods: {
+
     getVotes: function (canidate) {
-      return this.voting[canidate].totalVotes
+      // console.log(canidate, 'getVotes')
+      return this.voting.canidates[canidate].totalVotes
     },
     getVotesPercent: function (canidate) {
       var percent = this.getVotes(canidate) / this.voting.totalVotes * 100

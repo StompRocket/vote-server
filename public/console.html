@@ -11,16 +11,15 @@
         <main id="app">
             <div class="info-box">
                 <br />
-                <div class="title is-2 centerAlign whiteText">
-                    Vote Data
-                </div>
+                <h1 class="title is-2 centerAlign whiteText">Vote Data</h1>
+                <h2 class="subtitle is-5  centerAlign whiteText">Voting: <b><span v-if="voting.open">OPEN</span><span v-if="!voting.open">CLOSED</span></b></h2>
                 <br />
-                <p>Voting is <b><span v-if="voting.open">OPEN</span><span v-if="!voting.open">CLOSED</span></b></p>
+
             </div>
             <br />
             <div class="container">
-                <div class="box">
-                    <h1>NOTE: the graphs and the percent voted is comming, I commented them out for now</h1>
+                <div class="">
+                    <h1>NOTE: the graphs are comming, I commented them out for now</h1>
                     <!--
                     <div class="title is-3">
                         Current Rankings:
@@ -76,23 +75,19 @@
 -->
 
                     <div class="box">
-                        <p>Toaltal Votes {{voting.totalVotes}}</p>
+                        <h1 class="title">Canidate Ranking</h1>
+                        <h2 class="subtitle">Total Votes: {{voting.totalVotes}}</h2>
                         <hr>
-                        <div v-for="canidate in canidates" class="candidate-rank-item">
-                            <div class="flex-row">
-                                <b>{{canidate.name}}</b> &nbsp;&nbsp;&nbsp;
-                                <span>{{getVotes(canidate.name)}} votes {{getVotesPercent(canidate.name)}}%</span>
+                        <div v-for="canidate in sortedArray" class="box">
+                            <div class="title is-3">
+                                <b>{{canidate[0]}}</b> {{getVotesPercent(canidate[0])}}% of votes
                             </div>
-                            <hr />
+                            <progress class="progress is-primary" :value="getVotesPercent(canidate[0])" max="100"></progress>
+
                         </div>
+
                     </div>
-                    <!--<div class="box">
-                    <div class="title is-3">
-                        {{console.candidate.name}}
-                    </div>
-                    <h1 class="title is-4">{{console.candidate.vote-percent}}% of votes</h1>
-                    <progress class="progress is-primary" value="35" max="100"></progress>
-                </div> -->
+
                 </div>
         </main>
         <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>

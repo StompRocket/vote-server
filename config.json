@@ -18,21 +18,28 @@
   "voting": {
     "open": true,
     "totalVotes": 0,
+    "totalClients": 0,
     "users": {
 
     },
-    "Liam Jenney": {
-      "votes": [],
-      "totalVotes": 0
-    },
-    "James Iskander": {
-      "votes": [],
-      "totalVotes": 0
-    },
-    "Leo Fayad": {
-      "votes": [],
-      "totalVotes": 0
+    "canidates": {
+      "Liam Jenney": {
+        "name": "Liam Jenney",
+        "votes": [],
+        "totalVotes": 0
+      },
+      "James Iskander": {
+        "name": "James Iskander",
+        "votes": [],
+        "totalVotes": 0
+      },
+      "Leo Fayad": {
+        "name": "Leo Fayad",
+        "votes": [],
+        "totalVotes": 0
+      }
     }
+
   }
 
 }
