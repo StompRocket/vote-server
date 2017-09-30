@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>PS Vote!</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css" />
+  <link rel="stylesheet" href="candidates.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+
+<body>
+  <main id="console">
+    <div class="info-box">
+      <br />
+      <div class="title is-2 centerAlign whiteText">
+        Edit Candidates
+      </div>
+      <br />
+    </div>
+    <br />
+    <div class="container">
+      <div class="box">
+        <div class="flex-row">
+          <div class="title is-3">
+            Candidate Name:
+          </div>
+          <div class="title is-3" contenteditable="true">
+            {{candidate.name}}
+          </div>
+        </div>
+
+        Candidate Slogan:
+        <i contenteditable="true">{{candidate.motto}}</i>
+        <br />
+        Candidate Bio:
+        <span contenteditable="true">{{candidate.values}}</span>
+        <br />
+
+
+        <div class="file has-name">
+          <label class="file-label">
+            <input class="file-input" type="file" name="candidate.image" hidden="true">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fa fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Choose Candidate Image
+              </span>
+              <span class="file-name">{{candidate.image.name}}</span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div v-on:click="add-candidate"class="box title is-2 info-box centerAlign">
+        +
+      </div>
+
+    </div>
+  </main>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="main.js " charset="utf-8 "></script>
+</body>
+
+</html>
