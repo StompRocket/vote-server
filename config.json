@@ -1,0 +1,33 @@
+{
+  "canidates": [{
+    "name": "Liam Jenney",
+    "motto": "Take a free drink",
+    "values": "Eat food, sleep well, play, meh",
+    "image": "./images/profile_placeholder.png"
+  }, {
+    "name": "James Iskander",
+    "motto": "Repersenting you!",
+    "values": "Belive in me!",
+    "image": "./images/profile_placeholder.png"
+  }, {
+    "name": "Leo Fayad",
+    "motto": "Dont be a fayo, vote for leo.",
+    "values": "None, Fame, Lazars!",
+    "image": "./images/profile_placeholder.png"
+  }],
+  "voting": {
+    "users": {
+
+    },
+    "Liam Jenney": {
+      "votes": []
+    },
+    "James Iskander": {
+      "votes": []
+    },
+    "Leo Fayad": {
+      "votes": []
+    }
+  }
+
+}
