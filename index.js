@@ -10,13 +10,6 @@ console.log('listening on', port)
 var canidates = []
 var db = {}
 var fs = require('fs')
-fs.writeFile(__dirname + '/public/port.txt', port, function (err) {
-  if (err) {
-    return console.log(err)
-  }
-
-  console.log('The file was saved!')
-})
 fs.readFile(__dirname + '/config.json', function (err, data) {
   if (err) {
     throw err
@@ -29,11 +22,20 @@ console.log(port)
 // io.set('transports', ['xhr-polling'])
 io.on('connection', function (socket) {
   console.log('connection')
+  if (!db.voting.open) {
+    socket.emit('votingClosed')
+    console.log(db.voting.open, 'voting closed')
+  }
   socket.on('vote', function (canidate, uid, email, name) {
-    console.log(canidate, uid, email, name)
-    console.log(db.voting)
-    db.voting[canidate.toString()].votes.push(uid)
-    db.voting.users.uid = true
+    console.log('checking', uid)
+    if (db.voting.users.uid) {
+      socket.emit('allreadyvoted')
+    } else {
+      console.log(canidate, uid, email, name)
+      console.log(db.voting)
+      db.voting[canidate.toString()].votes.push(uid)
+      db.voting.users.uid = true
+    }
   })
   socket.on('checkIfVoted', function (uid) {
     console.log('checking', uid)

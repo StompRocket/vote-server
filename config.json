@@ -16,6 +16,7 @@
     "image": "./images/profile_placeholder.png"
   }],
   "voting": {
+    "open": true,
     "users": {
 
     },
