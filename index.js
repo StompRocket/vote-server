@@ -26,22 +26,30 @@ io.on('connection', function (socket) {
     socket.emit('votingClosed')
     console.log(db.voting.open, 'voting closed')
   }
+  socket.on('getVotes', function () {
+    socket.emit('votes', db.voting)
+    console.log('sending votes')
+  })
   socket.on('vote', function (canidate, uid, email, name) {
     console.log('checking', uid)
-    if (db.voting.users.uid) {
+    if (db.voting.users[uid]) {
       socket.emit('allreadyvoted')
     } else {
       console.log(canidate, uid, email, name)
-      console.log(db.voting)
+      // console.log(db.voting)
       db.voting[canidate.toString()].votes.push(uid)
       db.voting.users.uid = true
+      db.voting[canidate.toString()].totalVotes ++
+      db.voting.totalVotes ++
+      io.emit('votes', db.voting)
     }
   })
   socket.on('checkIfVoted', function (uid) {
     console.log('checking', uid)
-    if (db.voting.users.uid) {
+    if (db.voting.users[uid]) {
       socket.emit('allreadyvoted')
       console.log('allreadyvoted')
+      // console.log(db)
     } else {
       socket.emit('checksOut')
       console.log('checksout')

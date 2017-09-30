@@ -17,17 +17,21 @@
   }],
   "voting": {
     "open": true,
+    "totalVotes": 0,
     "users": {
 
     },
     "Liam Jenney": {
-      "votes": []
+      "votes": [],
+      "totalVotes": 0
     },
     "James Iskander": {
-      "votes": []
+      "votes": [],
+      "totalVotes": 0
     },
     "Leo Fayad": {
-      "votes": []
+      "votes": [],
+      "totalVotes": 0
     }
   }
 
