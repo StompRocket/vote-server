@@ -12,8 +12,8 @@ fs.readFile(__dirname + '/config.json', function (err, data) {
   canidates = data.canidates
   db = data
 })
-app.listen(8000)
-console.log('listening on port 8000')
+app.listen(process.env.PORT || 8000)
+console.log('listening on port', process.env.PORT || 8000)
 io.on('connection', function (socket) {
   console.log('connection')
   socket.on('vote', function (canidate, uid, email, name) {
