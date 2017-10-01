@@ -15,7 +15,7 @@ fs.readFile(__dirname + '/config.json', function (err, data) {
     throw err
   }
   data = JSON.parse(data.toString())
-  canidates = data.canidates
+
   db = data
 })
 console.log(port)
@@ -26,6 +26,17 @@ io.on('connection', function (socket) {
     socket.emit('votingClosed')
     console.log(db.voting.open, 'voting closed')
   }
+  socket.on('updateCanidates', (canidates) => {
+    db.canidates = canidates
+    var saveDB = JSON.stringify(db)
+    fs.writeFile(__dirname + '/config.json', saveDB, function (err) {
+      if (err) {
+        return console.log(err)
+      }
+
+      console.log('DB saved')
+    })
+  })
   socket.on('getVotes', function () {
     socket.emit('votes', db.voting)
     console.log('sending votes')
@@ -66,7 +77,7 @@ io.on('connection', function (socket) {
     }
   })
   socket.on('getCanidates', function () {
-    socket.emit('canidates', canidates)
+    socket.emit('canidates', db.canidates)
   })
   socket.on('disconnect', function () {
     console.log('user disconnected')
