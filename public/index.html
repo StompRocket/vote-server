@@ -35,15 +35,23 @@
                 <div v-if="loginState" class="container">
                     <br />
                     <div v-for="candidate in canidates" class="box">
-                        <div class="title is-3">
-                            {{candidate.name}}
+                        <div class="columns">
+                            <div v-if="candidate.image" class="column is-one-third">
+                                <img class="profile" :src="candidate.image" />
+                            </div>
+                            <div class="column">
+                                <div class="title is-3">
+                                    {{candidate.name}}
+                                </div>
+                                <i>{{candidate.motto}}</i>
+                                <br />
+                                <br />
+                                <div>
+                                    {{candidate.values}}
+                                </div>
+                            </div>
                         </div>
-                        <i>{{candidate.motto}}</i>
-                        <br />
-                        <br />
-                        <div>
-                            {{candidate.values}}
-                        </div>
+
                         <br />
                         <a href="#!" @click.prevent="openModal(candidate)">
                             <div class="box info-box">

@@ -27,3 +27,8 @@ a {
 html, body {
   height: 100%;
 }
+
+.profile {
+  height: 15vw;
+  width: auto;
+}
