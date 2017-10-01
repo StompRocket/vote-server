@@ -36,7 +36,7 @@
 
                     <div v-if="!candidate.image" class="file has-name">
                         <label class="file-label">
-                        <input class="file-input" type="file" @change="onFileChange(candidate, $event)" hidden="true">
+                        <input class="file-input" type="file" accept="image/*" @change="onFileChange(candidate, $event)" hidden="true">
                         <span class="file-cta">
                             <span class="file-icon">
                         <i class="fa fa-upload"></i>
