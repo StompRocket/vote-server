@@ -22,14 +22,11 @@ console.log(port)
 // io.set('transports', ['xhr-polling'])
 io.on('connection', function (socket) {
   console.log('connection')
-  var type = 'client'
-  io.emit('votes', db.voting)
   if (!db.voting.open) {
     socket.emit('votingClosed')
     console.log(db.voting.open, 'voting closed')
   }
   socket.on('getVotes', function () {
-    type = 'console'
     socket.emit('votes', db.voting)
     console.log('sending votes')
   })
@@ -46,6 +43,13 @@ io.on('connection', function (socket) {
       db.voting.canidates[canidate.toString()].totalVotes ++
       db.voting.totalVotes ++
       io.emit('votes', db.voting)
+      fs.writeFile(__dirname + '/config.json', db, function (err) {
+        if (err) {
+          return console.log(err)
+        }
+
+        console.log('DB saved')
+      })
     }
   })
   socket.on('checkIfVoted', function (uid) {
@@ -63,10 +67,6 @@ io.on('connection', function (socket) {
     socket.emit('canidates', canidates)
   })
   socket.on('disconnect', function () {
-    if (type == 'client') {
-      db.voting.totalClients --
-    }
-    socket.emit('votes', db.voting)
     console.log('user disconnected')
   })
 })
