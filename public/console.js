@@ -55,20 +55,14 @@ var app = new Vue({
             label: '# of Votes',
             data: [topThree[0][1].totalVotes, topThree[1][1].totalVotes, topThree[2][1].totalVotes],
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
+              '#3498db',
+              '#9b59b6',
+              '#f1c40f'
             ],
             borderColor: [
-              'rgba(255,99,132,1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
+              '#2980b9',
+              '#8e44ad',
+              '#f39c12'
             ],
             borderWidth: 1
           }]
@@ -78,7 +72,7 @@ var app = new Vue({
             yAxes: [{
               ticks: {
                 beginAtZero: true,
-                suggestedMax: topThree[0][1].totalVotes + 20
+                suggestedMax: topThree[0][1].totalVotes + 10
               }
             }]
           }
