@@ -43,7 +43,9 @@ io.on('connection', function (socket) {
       db.voting.canidates[canidate.toString()].totalVotes ++
       db.voting.totalVotes ++
       io.emit('votes', db.voting)
-      fs.writeFile(__dirname + '/config.json', db, function (err) {
+      var saveDB = JSON.stringify(db)
+    //  console.log(saveDB)
+      fs.writeFile(__dirname + '/config.json', saveDB, function (err) {
         if (err) {
           return console.log(err)
         }

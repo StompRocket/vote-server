@@ -14,17 +14,24 @@
     "motto": "Dont be a fayo, vote for leo.",
     "values": "None, Fame, Lazars!",
     "image": "./images/profile_placeholder.png"
+  }, {
+    "name": "Ronan",
+    "motto": "Two Heads Are Better Than One",
+    "values": "You!",
+    "image": "./images/profile_placeholder.png"
   }],
   "voting": {
     "open": true,
     "totalVotes": 0,
-    "totalClients": 0,
-    "users": {
-
-    },
+    "users": {},
     "canidates": {
       "Liam Jenney": {
         "name": "Liam Jenney",
+        "votes": [],
+        "totalVotes": 0
+      },
+      "Ronan": {
+        "name": "Ronan",
         "votes": [],
         "totalVotes": 0
       },
@@ -38,8 +45,7 @@
         "votes": [],
         "totalVotes": 0
       }
-    }
-
+    },
+    "totalClients": null
   }
-
 }
